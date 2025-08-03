@@ -67,7 +67,7 @@ h2 {
 }
 
 #home {
-  background-image: url("homályos\ battery.png"); 
+  background-image: url("Logo.png"); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -97,5 +97,6 @@ h2 {
     display: block;
   }
 } 
+
 
 
