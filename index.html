@@ -47,7 +47,7 @@
     tintStrength: 0.30,
 
     // Logo (top-left) — ~3× bigger than before
-    logo: { src: "./media/miniben-logo.png", width: 450, height: 120, alt: "MiniBen.Me" },
+    logo: { src: "./media/miniben-logo.png", alt: "MiniBen.Me" },
 
     // CTAs
     ctaUrl: "mailto:hello@miniben.me?subject=BRICKVOLT%20launch%20updates",
@@ -206,60 +206,71 @@
       @keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
     }
 
-    /* ===== Mobile / small screens ===== */
+    /* LOGÓ: arányos zsugorodás, fix méret felülírása */
+    #brandLogo{
+      width: auto !important;
+      height: auto !important;
+      max-height: 120px;          /* desktop plafon */
+    }
     @media (max-width: 640px){
+      #brandLogo{ max-height: clamp(44px, 10vw, 70px); }
+    }
+    
+    /* MOBIL LAYOUT: több magasság, semmi kilógás, sarkok megmaradnak */
+    @media (max-width: 640px){
+      .wrap{ padding: 16px; }
+    
       .hero{
-        width: 100vw;           /* teljes szélesség */
-        border-radius: 0;       /* ne vágjuk le a sarkokat, ne csússzon ki */
+        width: 100%;
+        max-width: 100%;
+        /* aspect-ratio helyett engedjük magasabbra nőni, hogy minden beférjen */
+        aspect-ratio: auto;
+        min-height: 520px;        /* elég hely a cím+számláló+idézeteknek */
+        border-radius: var(--radius);
+        overflow: hidden;         /* kerek sarkok érvényesülnek */
+      }
+    
+      .bg{
+        inset: 0;                 /* ne lógjon ki a kerekítésen túl */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: none;
       }
     
       .brandmark{
-        top: 10px;
-        left: 10px;
+        top: 10px; left: 10px;
         padding: 6px 8px;
-        border-radius: 10px;
+        border-radius: 12px;
         box-shadow: 0 6px 18px rgba(0,0,0,.25);
       }
-      .brandmark img{
-        max-height: 120px; /* desktopon max 120px magas */
-      }
     
+      /* Adjunk helyet a logó alatt a tartalomnak */
       .content{
-        padding: calc(70px + env(safe-area-inset-top)) 16px 16px;
-        /* ↑ hely a logónak (kb. 70px), plusz biztonság a notch-oknak */
+        padding: calc(64px + env(safe-area-inset-top)) 16px 90px;
+        /*                  ↑ logo + biztonság a notch-nak
+                               ↑ extra alsó padding a számlálónak és az idézetnek */
       }
     
-      h1{ font-size: clamp(26px, 9vw, 40px); letter-spacing:.3px }
+      h1{ font-size: clamp(26px, 8.5vw, 40px); letter-spacing:.3px }
       .sub{ font-size: clamp(13px, 4vw, 16px) }
     
-      .row{ gap: 8px }
-      .cta{ padding: 10px 14px; font-size: 14px }
+      .row{ gap: 10px }
+      .cta{ padding: 10px 16px; font-size: 14px }
     
-      .count{ gap: 8px; margin-top: 10px }
-      .cell{ min-width: 54px; padding: 6px 8px; border-radius: 10px }
+      .count{ gap: 10px; margin-top: 12px; }
+      .cell{ min-width: 56px; padding: 6px 8px; border-radius: 10px }
       .cell b{ font-size: 16px }
       .cell span{ font-size: 11px }
     
+      .testimonials{ bottom: 12px; width: 92%; }
       .t-quote{ font-size: 12px; padding: 8px 12px }
     }
     
-    /* Extra kis kijelzőknél (iPhone SE, régi Androidok) */
+    /* Extra kis kijelzők (pl. iPhone SE) */
     @media (max-width: 380px){
-      .brandmark img{ max-height: 44px }
-      .content{ padding-top: calc(58px + env(safe-area-inset-top)) }
-      .cta{ font-size: 13px }
-      .cell{ min-width: 48px }
-    }
-
-    @media (max-width: 640px){
-      .brandmark img {
-        max-height: 70px;  /* mobilon kisebb */
-      }
-    }
-    @media (max-width: 380px){
-      .brandmark img {
-        max-height: 50px;  /* extra kicsi kijelzőn még kisebb */
-      }
+      .content{ padding-top: calc(54px + env(safe-area-inset-top)); }
+      .cell{ min-width: 50px; }
     }
   </style>
 </head>
@@ -445,6 +456,7 @@
   <!-- Optional: analytics / LinkedIn Insight Tag -->
 </body>
 </html>
+
 
 
 
