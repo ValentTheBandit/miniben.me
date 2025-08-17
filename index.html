@@ -205,6 +205,51 @@
       .fade-in{animation:fade .9s ease-out both}
       @keyframes fade{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
     }
+
+    /* ===== Mobile / small screens ===== */
+    @media (max-width: 640px){
+      .hero{
+        width: 100vw;           /* teljes szélesség */
+        border-radius: 0;       /* ne vágjuk le a sarkokat, ne csússzon ki */
+      }
+    
+      .brandmark{
+        top: 10px;
+        left: 10px;
+        padding: 6px 8px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0,0,0,.25);
+      }
+      .brandmark img{
+        max-height: 54px;       /* kisebb logó */
+      }
+    
+      .content{
+        padding: calc(70px + env(safe-area-inset-top)) 16px 16px;
+        /* ↑ hely a logónak (kb. 70px), plusz biztonság a notch-oknak */
+      }
+    
+      h1{ font-size: clamp(26px, 9vw, 40px); letter-spacing:.3px }
+      .sub{ font-size: clamp(13px, 4vw, 16px) }
+    
+      .row{ gap: 8px }
+      .cta{ padding: 10px 14px; font-size: 14px }
+    
+      .count{ gap: 8px; margin-top: 10px }
+      .cell{ min-width: 54px; padding: 6px 8px; border-radius: 10px }
+      .cell b{ font-size: 16px }
+      .cell span{ font-size: 11px }
+    
+      .t-quote{ font-size: 12px; padding: 8px 12px }
+    }
+    
+    /* Extra kis kijelzőknél (iPhone SE, régi Androidok) */
+    @media (max-width: 380px){
+      .brandmark img{ max-height: 44px }
+      .content{ padding-top: calc(58px + env(safe-area-inset-top)) }
+      .cta{ font-size: 13px }
+      .cell{ min-width: 48px }
+    }
   </style>
 </head>
 <body>
@@ -389,6 +434,7 @@
   <!-- Optional: analytics / LinkedIn Insight Tag -->
 </body>
 </html>
+
 
 
 
