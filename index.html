@@ -221,7 +221,11 @@
         box-shadow: 0 6px 18px rgba(0,0,0,.25);
       }
       .brandmark img{
-        max-height: 54px;       /* kisebb logó */
+        display: block;
+        height: auto;
+        max-width: 100%;   /* sosem lógjon túl a keretén */
+        max-height: 120px; /* desktopon max 120px magas */
+        width: auto;
       }
     
       .content{
@@ -249,6 +253,17 @@
       .content{ padding-top: calc(58px + env(safe-area-inset-top)) }
       .cta{ font-size: 13px }
       .cell{ min-width: 48px }
+    }
+
+    @media (max-width: 640px){
+      .brandmark img {
+        max-height: 70px;  /* mobilon kisebb */
+      }
+    }
+    @media (max-width: 380px){
+      .brandmark img {
+        max-height: 50px;  /* extra kicsi kijelzőn még kisebb */
+      }
     }
   </style>
 </head>
@@ -434,6 +449,7 @@
   <!-- Optional: analytics / LinkedIn Insight Tag -->
 </body>
 </html>
+
 
 
 
