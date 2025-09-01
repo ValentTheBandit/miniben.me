@@ -64,7 +64,7 @@
       title: "BRICKVOLT",
       subtitle: "A LEGO-compatible, non-functional display concept — launching soon",
       primaryCta: "Notify me",
-      secondaryCta: "Kickstarter (locked)",
+      secondaryCta: "Kickstarter",
       teaser: "We’re building the smallest big factory. Join early to shape the design, unlock behind-the-scenes drops, and secure your Founder spot.",
       countdownLabels: { d:"days", h:"hours", m:"min", s:"sec" },
       legal: "LEGO® is a trademark of the LEGO Group, which does not sponsor, authorize, or endorse this project. Independent, LEGO-compatible concept."
@@ -378,17 +378,12 @@
       // CTAs
       const cta = document.getElementById('cta');
       cta.href = cfg.ctaUrl || "#";
-      if (cfg.ksDisabled || !cfg.ksPreview){
-        ksBtn.classList.add('disabled');
-        ksBtn.setAttribute('aria-disabled', 'true');
-        ksBtn.href = "#";
-        ksBtn.addEventListener('click', (e)=> e.preventDefault());
-        ksBtn.title = "Coming soon";
-      } else {
-        ksBtn.classList.remove('disabled');
-        ksBtn.removeAttribute('aria-disabled');
-        ksBtn.href = cfg.ksPreview;
-      }
+      // Kickstarter gomb aktív, a megadott linkre mutat
+      ksBtn.classList.remove('disabled');
+      ksBtn.removeAttribute('aria-disabled');
+      ksBtn.href = "https://www.kickstarter.com/projects/andrasmade/1854894022?ref=avht93&token=d302c7c2";
+      ksBtn.classList.add('cta');
+      ksBtn.title = "Support on Kickstarter";
 
       // Countdown
       if (cfg.showCountdown){
@@ -456,7 +451,6 @@
   <!-- Optional: analytics / LinkedIn Insight Tag -->
 </body>
 </html>
-
 
 
 
