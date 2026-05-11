@@ -1,155 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hu">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>miniben.me – 3D minifigura rendelés</title>
-  <link rel="stylesheet" href="/style.css" />
+  <title>Miniben Projektek</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body>
 
-<body data-page="home">
-  <div class="container">
-    <header class="nav">
-      <div class="brand">
-        <div class="logo">MB</div>
-        <div class="brandText">
-            <div class="brandTitle">miniben.me</div>
-            <div class="brandSubtitle">3D minifigurák fotó alapján</div>
-        </div>
-      </div>
+  <section id="loginPage" class="login-page">
+    <div class="login-card">
+      <div class="logo">miniben<span>.me</span></div>
+      <h1>Privát projektoldal</h1>
+      <p>Add meg a jelszót a weboldal sablonok megtekintéséhez.</p>
 
-      <nav class="navlinks">
-        <a href="#gallery">Kész figurák</a>
-        <a href="#order">Rendelés</a>
+      <input id="passwordInput" type="password" placeholder="Jelszó" />
+      <button onclick="login()">Belépés</button>
+
+      <p id="errorMessage" class="error"></p>
+    </div>
+  </section>
+
+  <main id="app" class="hidden">
+    <header class="hero">
+      <nav>
+        <div class="logo">miniben<span>.me</span></div>
+        <button class="logout" onclick="logout()">Kilépés</button>
       </nav>
+
+      <div class="hero-content">
+        <p class="badge">Weboldal sablonok & mini projektek</p>
+        <h1>Válassz egy demó weboldalt</h1>
+        <p>
+          Itt találod az elkészült weboldal sablonokat. Kattints egy projektre,
+          és nézd meg élő demóként.
+        </p>
+      </div>
     </header>
 
-    <!-- HERO -->
-    <section class="heroStretch">
-      <div class="card">
-        <h1 class="h1">Küldj egy képet – mi minifigurát készítünk belőle.</h1>
-        <p class="p">
-          Házi kedvencedről, rólad vagy bármilyen objektumról: elkészítjük a 3D modellt, egyeztetünk,
-          és legyártjuk a figurát. A rendelés leadása egyszerű: tölts fel egy képet amelyen látszódik 
-          teljes egészében akiről, amiről készüljön a figura és mi valóra váltjuk.
-        </p>
-        <div class="row" style="gap:10px; justify-content:flex-start;">
-          <a class="btn primary" href="#gallery">Kész figurák</a>
-          <a class="btn" href="#order">Rendelés leadása</a>
-        </div>
+    <section class="projects">
+      <a href="#" class="project-card">
+        <span>01</span>
+        <h2>Étterem weboldal</h2>
+        <p>Modern, elegáns landing oldal éttermeknek és kávézóknak.</p>
+        <button>Megnézem</button>
+      </a>
 
-        <div class="kpis">
-          <div class="kpi"><strong>Fotó alapján</strong><span>Ember, állat, egyéb objektum</span></div>
-          <div class="kpi"><strong>Egyeztetés</strong><span>Modell jóváhagyással</span></div>
-          <div class="kpi"><strong>Gyártás</strong><span>Minőségi kivitel</span></div>
-        </div>
-      </div>
+      <a href="#" class="project-card">
+        <span>02</span>
+        <h2>Edzői oldal</h2>
+        <p>Személyi edzőknek, coachoknak és szolgáltatóknak.</p>
+        <button>Megnézem</button>
+      </a>
+
+      <a href="#" class="project-card">
+        <span>03</span>
+        <h2>Webshop sablon</h2>
+        <p>Letisztult termékbemutató oldal online értékesítéshez.</p>
+        <button>Megnézem</button>
+      </a>
+
+      <a href="#" class="project-card">
+        <span>04</span>
+        <h2>Ingatlanos oldal</h2>
+        <p>Ingatlan hirdetésekhez, értékesítőknek és ügynökségeknek.</p>
+        <button>Megnézem</button>
+      </a>
+
+      <a href="#" class="project-card">
+        <span>05</span>
+        <h2>SaaS landing page</h2>
+        <p>Modern startup vagy app bemutató weboldal.</p>
+        <button>Megnézem</button>
+      </a>
+
+      <a href="#" class="project-card">
+        <span>06</span>
+        <h2>Szolgáltatói oldal</h2>
+        <p>Egyszerű, profi bemutatkozó oldal vállalkozóknak.</p>
+        <button>Megnézem</button>
+      </a>
     </section>
+  </main>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="card">
-      <div class="grid grid3 gallery">
-        <div class="galleryItem">
-            <img src="fig1.png" alt="Kész figura 1">
-        </div>
-        <div class="galleryItem">
-            <img src="fig2.png" alt="Kész figura 2">
-        </div>
-        <div class="galleryItem">
-            <img src="fig3.png" alt="Kész figura 3">
-        </div>
-      </div>
-    </section>
-
-    <!-- ORDER FORM -->
-    <section id="order" class="card" style="margin-top:14px;">
-      <div class="row">
-        <h2 style="margin:0;">Rendelés leadása</h2>
-      </div>
-
-      <form id="orderForm" class="form">
-        <div class="formRow">
-          <div>
-            <label>Név</label>
-            <input id="name" class="input" placeholder="Teljes név" required />
-          </div>
-          <div>
-            <label>Email</label>
-            <input id="email" class="input" type="email" placeholder="email@pelda.hu" required />
-          </div>
-        </div>
-
-        <div class="formRow">
-          <div style="grid-column:1/-1;">
-            <label>Leírás / megjegyzés</label>
-            <textarea id="notes" class="input" rows="4" placeholder="Mit kell tudni róla? Méret, szín, külön kérés..."></textarea>
-          </div>
-        </div>
-
-        <div class="formRow">
-          <div style="grid-column:1/-1;">
-            <label>Kép feltöltése (JPG/PNG)</label>
-            <div class="fileField">
-                <input id="png1" type="file" accept="image/*" required hidden />
-
-                <label for="png1" class="fileBtn">
-                    <span class="fileIcon">📁</span>
-                    <span class="fileText">Kép kiválasztása</span>
-                </label>
-
-                <div class="fileName" id="png1Name">Nincs fájl kiválasztva</div>
-            </div>
-
-            <div class="small" style="margin-top:8px;">Javasolt több nézetből képet feltölteni.</div>
-          </div>
-        </div>
-
-        <div class="formRow">
-          <div style="grid-column:1/-1;">
-            <label class="consent">
-              <input id="consent" type="checkbox" required />
-              Elfogadom az <a href="#privacy" id="openPrivacy" style="text-decoration:underline;">adatkezelési nyilatkozatot</a>.
-            </label>
-          </div>
-        </div>
-
-        <div class="row" style="gap:10px; justify-content:flex-start;">
-          <button class="btn primary" type="submit">Küldés</button>
-        </div>
-
-        <div id="formMsg" class="small" style="margin-top:10px;"></div>
-      </form>
-    </section>
-
-    <div class="footer">© miniben.me • Kezdőoldal MVP</div>
-  </div>
-
-  <!-- IMAGE MODAL -->
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modalInner">
-      <button class="btn modalClose" id="closeModal">Bezárás</button>
-      <img id="modalImg" alt="Nagyított kép" />
-      <div id="modalCaption" class="small" style="margin-top:10px;"></div>
-    </div>
-  </div>
-
-  <!-- PRIVACY MODAL -->
-  <div id="privacy" class="modal" aria-hidden="true">
-    <div class="modalInner">
-      <button class="btn modalClose" id="closePrivacy">Bezárás</button>
-      <h3 style="margin:0 0 10px;">Adatkezelési nyilatkozat (rövid)</h3>
-      <p class="p" style="margin:0;">
-        A feltöltött képet és a megadott adatokat kizárólag a rendelés feldolgozásához használjuk (kapcsolatfelvétel,
-        árajánlat, egyeztetés). A képeket harmadik félnek nem adjuk át, és csak a szükséges ideig tároljuk.
-        Kérheted az adataid törlését emailben.
-      </p>
-      <hr class="sep"/>
-      <p class="small" style="margin:0;">
-        (Később csinálunk külön /privacy oldalt is, ez most MVP.)
-      </p>
-    </div>
-  </div>
-
-  <script src="/app.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
